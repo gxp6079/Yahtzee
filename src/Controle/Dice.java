@@ -5,6 +5,9 @@ import Model.DiceObserver;
 
 import java.util.ArrayList;
 import java.util.Random;
+/*
+commit
+ */
 
 public class Dice implements DiceInterface{
 
