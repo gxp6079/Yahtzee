@@ -7,6 +7,8 @@ public class ScoreOptions {
     private Collection<Dice> dices;
     private HashMap<String, Integer> options;
     private HashMap<Integer, Integer> occurencies;
+    private String selected;
+    private boolean hasSelected = false;
 
     public ScoreOptions(Collection<Dice> dices){
         this.dices = dices;
@@ -89,4 +91,25 @@ public class ScoreOptions {
         return 0;
     }
 
+    public void start(){
+        this.hasSelected = false;
+    }
+
+    public void setSelected(String score) throws Exception{
+        if(!hasSelected) {
+            this.selected = score;
+            this.hasSelected = true;
+        }
+        else {
+            /*
+            create selected more then one score exception
+             */
+            throw new Exception();
+        }
+    }
+
+
+    public String getSelected() {
+        return selected;
+    }
 }

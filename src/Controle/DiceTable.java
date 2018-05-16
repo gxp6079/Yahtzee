@@ -17,9 +17,9 @@ public class DiceTable {
         }
     }
 
-    public HashMap<String, Integer> getScoreOptions() {
+    public ScoreOptions getScoreOptions() {
         ScoreOptions scoreOptions = new ScoreOptions(dices.values());
-        return scoreOptions.getOptions();
+        return scoreOptions;
     }
 
     public HashMap<String, Dice> getDices() {
@@ -31,6 +31,12 @@ public class DiceTable {
             if (dice.getSelection()){
                 dice.roll();
             }
+        }
+    }
+
+    public void rollAll(){
+        for (Dice dice : dices.values()){
+            dice.roll();
         }
     }
 }

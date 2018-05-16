@@ -1,7 +1,5 @@
 package Controle;
 
-import java.util.ArrayList;
-
 public class Player {
 
     private String name;
@@ -18,6 +16,19 @@ public class Player {
 
     public Pair chooseScore(String scoreType, int value){
         return new Pair(scoreType, value);
+    }
+
+    public void play(){
+        dices.getScoreOptions().start();
+        dices.rollAll();
+    }
+
+    public void rollSelected(){
+        dices.roll();
+    }
+
+    public void selectScore() throws Exception{
+        String selected = dices.getScoreOptions().getSelected();
     }
 
     public String getName() {

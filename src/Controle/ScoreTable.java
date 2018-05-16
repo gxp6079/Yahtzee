@@ -55,12 +55,15 @@ public class ScoreTable {
 
     public boolean checkValid(String player, String type, int value) throws Exception{
         if(player.equals(player1.getName())) {
-            return player1.getDices().getScoreOptions().get(type) == value;
+            return player1.getDices().getScoreOptions().getOptions().get(type) == value;
         }
         else if(player.equals(player2.getName())){
-            return player2.getDices().getScoreOptions().get(type) == value;
+            return player2.getDices().getScoreOptions().getOptions().get(type) == value;
         }
         else {
+            /*
+            create invalid player exception
+             */
             throw new Exception();
         }
     }
