@@ -1,5 +1,8 @@
 package Controle;
 
+import Model.ScoreOptionsObserver;
+
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -9,6 +12,7 @@ public class ScoreOptions {
     private HashMap<Integer, Integer> occurencies;
     private String selected;
     private boolean hasSelected = false;
+    private ArrayList<ScoreOptionsObserver> observers;
 
     public ScoreOptions(Collection<Dice> dices){
         this.dices = dices;
@@ -22,6 +26,10 @@ public class ScoreOptions {
             }
         }
         this.options =  new HashMap<>();
+        setOptions();
+    }
+
+    private void setOptions(){
         options.put("Ones", occurencies.get(1));
         options.put("Twos", 2*(occurencies.get(2)));
         options.put("Threes", 3*(occurencies.get(3)));
@@ -32,6 +40,9 @@ public class ScoreOptions {
         options.put("FourOfAKind", FourOfAKind());
         options.put("Straight", Straight());
         options.put("YAHTZEE", Yahtzee());
+        for(ScoreOptionsObserver observer : observers){
+            observer.update(this);
+        }
     }
 
     public HashMap<String, Integer> getOptions() {
@@ -112,4 +123,6 @@ public class ScoreOptions {
     public String getSelected() {
         return selected;
     }
+
+    public void addObserver(ScoreOptionsObserver observer){observers.add(observer);}
 }

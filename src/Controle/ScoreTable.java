@@ -42,10 +42,14 @@ public class ScoreTable {
         }
         if (checkValid(player, type, value)) {
             if (player.equals(player1.getName())){
-                scoresPlayer1.replace(type, value);
+                if(Integer.valueOf(scoresPlayer1.get(type)) != 0) {
+                    scoresPlayer1.replace(type, value);
+                }
             }
             else if(player.equals(player2.getName())){
-                scoresPlayer2.replace(type, value);
+                if(Integer.valueOf(scoresPlayer2.get(type)) != 0) {
+                    scoresPlayer2.replace(type, value);
+                }
             }
         }
         else{

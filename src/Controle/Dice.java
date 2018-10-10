@@ -2,6 +2,7 @@ package Controle;
 
 import Interfaces.DiceInterface;
 import Model.DiceObserver;
+import Model.ScoreOptionsObserver;
 
 import java.util.ArrayList;
 import java.util.Random;
