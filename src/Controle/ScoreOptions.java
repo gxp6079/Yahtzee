@@ -4,22 +4,22 @@ import java.util.HashMap;
 
 public class ScoreOptions {
 
-    private HashMap<String, String> options;
+    private HashMap<String, Option> options;
     private HashMap<Dice, Integer> occurencies;
 
     public ScoreOptions(DiceTable dices){
         this.options = new HashMap<>();
         this.occurencies = new HashMap<>();
-        options.put("One", "0");
-        options.put("Two", "0");
-        options.put("Three", "0");
-        options.put("Four", "0");
-        options.put("Five", "0");
-        options.put("Six", "0");
-        options.put("Full House", "0");
-        options.put("4 of a Kind", "0");
-        options.put("Straight", "0");
-        options.put("YAHTZEE", "0");
+        options.put("One", new Option());
+        options.put("Two", new Option());
+        options.put("Three", new Option());
+        options.put("Four", new Option());
+        options.put("Five", new Option());
+        options.put("Six", new Option());
+        options.put("Full House", new Option());
+        options.put("4 of a Kind", new Option());
+        options.put("Straight", new Option());
+        options.put("YAHTZEE", new Option());
         setOptions(dices);
     }
 
@@ -32,9 +32,9 @@ public class ScoreOptions {
             }
         }
         for(Dice dice : occurencies.keySet()){
-            options.replace(dice.getName(), Integer.toString(occurencies.get(dice)));
+            options.get(dice.getName()).setValue(Integer.toString(occurencies.get(dice))));
         }
-        options.replace("Full House", Integer.toString(checkFullHouse()));
+        options.get("Full House").setValue(Integer.toString(checkFullHouse()));
         options.replace("4 of a Kind", Integer.toString(check4ofAKind()));
         options.replace("Straight", Integer.toString(checkStraight(dices)));
         options.replace("YAHTZEE", Integer.toString(checkYahtzee()));
@@ -92,4 +92,7 @@ public class ScoreOptions {
         return 0;
     }
 
+    public HashMap<String, String> getOptions() {
+        return options;
+    }
 }
