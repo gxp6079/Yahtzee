@@ -28,5 +28,24 @@ public class Game {
         }
     }
 
+    public Player getPlayer1() {
+        return player1;
+    }
+
+    public Player getPlayer2() {
+        return player2;
+    }
+
+    public ScoreTable getScoreTable() {
+        return scoreTable;
+    }
+
+    public ScoreOptions getScoreOptions() {
+        return scoreOptions;
+    }
+
+    public DiceTable getDiceTable() {
+        return diceTable;
+    }
 }
 

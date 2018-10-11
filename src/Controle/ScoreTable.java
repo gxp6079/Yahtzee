@@ -34,11 +34,11 @@ public class ScoreTable {
         player2Score.put("YAHTZEE", "0");
     }
 
-    public void addScore(Player player, String type, String value){
+    public void addScore(Player player, Option option){
         if(player.equals(player1)){
-            player1Score.replace(type, value);
+            player1Score.replace(option.name, option.value);
         } else if(player.equals(player2)){
-            player2Score.replace(type, value);
+            player2Score.replace(option.name, option.value);
         }
     }
 

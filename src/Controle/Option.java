@@ -4,10 +4,12 @@ public class Option {
 
     String value;
     boolean selection;
+    String name;
 
-    public Option(){
+    public Option(String name){
+        this.name = name;
         this.value = "0";
-        this.selection = false
+        this.selection = false;
     }
 
     public void setValue(String value) {
@@ -16,6 +18,10 @@ public class Option {
 
     public String getValue(){
         return value;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setSelection(boolean selection) {

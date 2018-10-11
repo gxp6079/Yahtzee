@@ -1,6 +1,8 @@
 package View;
 
+import Controle.Game;
 import Controle.ScoreOptions;
+import Controle.ScoreTable;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,11 +19,13 @@ public class YahtzeeUI extends Application {
     DiceTableView diceTableView;
     Stage primaryStage;
     ScoreBoardView scoreBoardView;
+    Game game;
     ScoreOptionsView scoreOptionsView;
 
     public YahtzeeUI (){
-        this.diceTableView =  new DiceTableView();
-        this.scoreBoardView = new ScoreBoardView();
+        this.game = new Game();
+        this.diceTableView =  new DiceTableView(game.getDiceTable());
+        this.scoreBoardView = new ScoreBoardView(game.getScoreTable());
     }
 
     @Override
@@ -45,9 +49,9 @@ public class YahtzeeUI extends Application {
         selectButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                boolean isSelected = false;
                 for(Node node : scoreOptionsView.getView().getChildren()){
                     CheckBox checkBox = (CheckBox) (node);
-                    boolean isSelected = checkBox.isSelected();
                     int max = checkBox.getText().length();
                     String optionName = "";
                     for (int i = 0 ; i < max; i++){
@@ -55,8 +59,11 @@ public class YahtzeeUI extends Application {
                             optionName = checkBox.getText().substring(0, i -2);
                         }
                     }
+                    if(!isSelected){
+                        isSelected = checkBox.isSelected();
+                        scoreBoardView.getScoreTable().addScore(game.getCurrent(), scoreOptionsView.getScoreOptions().getOptions().get(optionName));
+                    }
                     scoreOptionsView.getScoreOptions().getOptions().get(optionName).setSelection(isSelected);
-
                 }
             }
         });

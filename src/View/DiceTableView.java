@@ -1,5 +1,6 @@
 package View;
 
+import Controle.Dice;
 import Controle.DiceTable;
 import javafx.scene.layout.GridPane;
 
@@ -8,8 +9,8 @@ public class DiceTableView {
     private GridPane view;
     private DiceTable diceTable;
 
-    public DiceTableView (){
-        this.diceTable =  new DiceTable();
+    public DiceTableView (DiceTable diceTable){
+        this.diceTable = diceTable;
         this.view = new GridPane();
         /*
         Latter this will change to represent the number this dice has in the dice table
