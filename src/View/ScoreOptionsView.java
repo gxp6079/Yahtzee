@@ -1,7 +1,9 @@
 package View;
 
+import Controle.Option;
 import Controle.ScoreOptions;
 import Model.ScoreOptionsObserver;
+import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
 
 public class ScoreOptionsView implements ScoreOptionsObserver {
@@ -12,6 +14,10 @@ public class ScoreOptionsView implements ScoreOptionsObserver {
     public ScoreOptionsView(ScoreOptions scoreOptions){
         this.view = new VBox();
         this.scoreOptions = scoreOptions;
+        for(Option option : scoreOptions.getOptions().values()){
+            CheckBox checkBox = new CheckBox(option.getName() + " : " + option.getValue());
+            view.getChildren().add(checkBox);
+        }
     }
 
     public VBox getView() {

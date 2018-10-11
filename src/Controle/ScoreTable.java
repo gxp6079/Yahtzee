@@ -12,6 +12,8 @@ public class ScoreTable {
     public ScoreTable(Player player1, Player player2){
         this.player1 = player1;
         this.player2 = player2;
+        player1Score = new HashMap<>();
+        player2Score = new HashMap<>();
         player1Score.put("One", "0");
         player2Score.put("One", "0");
         player1Score.put("Two", "0");

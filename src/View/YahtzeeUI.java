@@ -68,7 +68,8 @@ public class YahtzeeUI extends Application {
             }
         });
         HBox hBox2 = new HBox(rollButton);
-        VBox vBox = new VBox(hBox1, hBox2);
+        HBox hBox3 = new HBox(selectButton);
+        VBox vBox = new VBox(hBox1, hBox2, hBox3);
         Scene scene = new Scene(vBox);
         primaryStage.setScene(scene);
         primaryStage.show();
