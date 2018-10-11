@@ -2,7 +2,7 @@ package Controle;
 
 import java.util.HashMap;
 
-public class DiceTable {
+public class DiceTable{
 
     private HashMap<String , Dice> dices;
 
@@ -17,14 +17,8 @@ public class DiceTable {
         }
     }
 
-    public ScoreOptions getScoreOptions() {
-        ScoreOptions scoreOptions = new ScoreOptions(dices.values());
-        return scoreOptions;
-    }
+    public HashMap<String, Dice> getDices(){return dices;}
 
-    public HashMap<String, Dice> getDices() {
-        return dices;
-    }
 
     public void roll(){
         for (Dice dice : dices.values()){

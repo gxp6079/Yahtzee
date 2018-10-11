@@ -36,19 +36,18 @@ public class ScoreTable {
         scoresPlayer2.put("YAHTZEE", "0");
     }
 
-    public void addScore(String player, String type, String value) throws Exception {
-        if (value.equals("0")){
-            value = "CROSS";
-        }
-        if (checkValid(player, type, value)) {
+    public void addScore(Player player) throws Exception {
+        String type = player.getOptions().getSelected();
+        int value = player.getOptions().getOptions().get(type);
+        if (checkValid(player.getName(), type, value)) {
             if (player.equals(player1.getName())){
                 if(Integer.valueOf(scoresPlayer1.get(type)) != 0) {
-                    scoresPlayer1.replace(type, value);
+                    scoresPlayer1.replace(type, Integer.toString(value));
                 }
             }
             else if(player.equals(player2.getName())){
                 if(Integer.valueOf(scoresPlayer2.get(type)) != 0) {
-                    scoresPlayer2.replace(type, value);
+                    scoresPlayer2.replace(type, Integer.toString(value));
                 }
             }
         }
@@ -60,18 +59,18 @@ public class ScoreTable {
         }
     }
 
-    public boolean checkValid(String player, String type, String value) throws Exception{
+    public boolean checkValid(String player, String type, int value) throws Exception{
         if(player.equals(player1.getName()) && Integer.parseInt(scoresPlayer1.get(type)) == 0) {
-            if (value.equals("CROSS")){
+            if (value == 0){
                 return true;
             }
-            return player1.getDices().getScoreOptions().getOptions().get(type) == Integer.parseInt(value);
+            return player1.getOptions().getOptions().get(type) == value;
         }
         else if(player.equals(player2.getName()) && Integer.parseInt(scoresPlayer2.get(type)) == 0){
-            if (value.equals("CROSS")){
+            if (value == 0){
                 return true;
             }
-            return player2.getDices().getScoreOptions().getOptions().get(type) == Integer.parseInt(value);
+            return player2.getOptions().getOptions().get(type) == value;
         }
         else {
             /*

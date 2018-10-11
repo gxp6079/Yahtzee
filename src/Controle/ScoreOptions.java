@@ -7,22 +7,22 @@ import java.util.Collection;
 import java.util.HashMap;
 
 public class ScoreOptions {
-    private Collection<Dice> dices;
+    private DiceTable dices;
     private HashMap<String, Integer> options;
     private HashMap<Integer, Integer> occurencies;
     private String selected;
     private boolean hasSelected = false;
     private ArrayList<ScoreOptionsObserver> observers;
 
-    public ScoreOptions(Collection<Dice> dices){
+    public ScoreOptions(DiceTable dices){
         this.dices = dices;
         this.occurencies = new HashMap<>();
-        for (Dice dice : dices){
-            if (occurencies.keySet().contains(dice.getCurrentValue())){
-                occurencies.replace(dice.getCurrentValue(), occurencies.get(dice.getCurrentValue()) + 1);
+        for (String dice : dices.getDices().keySet()){
+            if (occurencies.keySet().contains(dices.getDices().get(dice).getCurrentValue())){
+                occurencies.replace(dices.getDices().get(dice).getCurrentValue(), occurencies.get(dices.getDices().get(dice).getCurrentValue()) + 1);
             }
             else{
-                occurencies.put(dice.getCurrentValue(), 1);
+                occurencies.put(dices.getDices().get(dice).getCurrentValue(), 1);
             }
         }
         this.options =  new HashMap<>();
@@ -44,6 +44,7 @@ public class ScoreOptions {
             observer.update(this);
         }
     }
+
 
     public HashMap<String, Integer> getOptions() {
         return options;
