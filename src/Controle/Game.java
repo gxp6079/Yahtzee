@@ -2,12 +2,12 @@ package Controle;
 
 public class Game {
 
-    private Player player1;
-    private Player player2;
+    private static Player player1;
+    private static Player player2;
     private ScoreTable scoreTable;
     private ScoreOptions scoreOptions;
     private DiceTable diceTable;
-    private Player current;
+    private static Player current;
 
     public Game(){
         this.player1 = new Player("Player 1");
@@ -20,7 +20,7 @@ public class Game {
 
     public Player getCurrent(){return current;}
 
-    public void setCurrent(){
+    public static void setCurrent(){
         if(current == player1){
             current = player2;
         }else{
@@ -28,11 +28,11 @@ public class Game {
         }
     }
 
-    public Player getPlayer1() {
+    public static Player getPlayer1() {
         return player1;
     }
 
-    public Player getPlayer2() {
+    public static Player getPlayer2() {
         return player2;
     }
 

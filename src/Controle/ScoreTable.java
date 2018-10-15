@@ -42,6 +42,7 @@ public class ScoreTable {
         } else if(player.equals(player2)){
             player2Score.replace(option.name, option.value);
         }
+        Game.setCurrent();
     }
 
 }
